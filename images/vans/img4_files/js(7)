@@ -1,0 +1,209 @@
+(function() {
+try {
+    try {
+    if (typeof MtVoid === 'undefined') {
+	var MtVoid = {
+            loc_data : {},
+            scr_data : {
+  "industry":"Clothing%20%26%20Accessories",
+  "mt_pqc":"mt_aid",
+  "mt_gfp":"mt_fp_mt_aid",
+  "event_type":"catchall",
+  "language":"en-US%2Cen%3Bq%3D0.9",
+  "page_name":"%2Fen-us%2Fshoes-c00081",
+  "v3":"https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dplp-leaderboard_old-skool_product__d-plp%26f%3DShoe%2520Styles%2COld%252520Skool",
+  "previous_url":"https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dtopnav",
+  "mt_pp":"2",
+  "mt_cb":"1687592632170",
+  "mt_id":"1635705",
+  "document_path":"%2Fen-us%2Fshoes-c00081",
+  "mt_lim":"20",
+  "mt_adid":"260125",
+  "document_title":"Shoes%20%7C%20Vans",
+  "version":"1.1",
+  "mt_fpa":"1",
+  "location":"https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dplp-leaderboard_old-skool_product__d-plp%26f%3DShoe%2520Styles%2COld%252520Skool",
+  "delimiter":"%7C"
+},
+            acq_data : {},
+            get: function(obj_name, var_name) {
+		return this[obj_name][var_name];
+	    },
+            set: function(obj_name, var_name, value) {
+		this[obj_name][var_name] = value;
+		return value;
+	    },
+
+            parse_qry: function(qs, destination) {
+		qs.replace(/[?&]([^=]+)=([^&]*)/g, function(all, key, value) {
+		    destination[key]= value;
+		});
+            },
+
+            makeqs : function() {
+		var qs = "";
+		var keys = [].concat.call(arguments);
+		if (keys.length < 2) {
+		    keys = Object.keys(this.acq_data);
+		}
+		var pairs = [];
+		var self = this;
+		keys.forEach(function(key) {
+		    pairs.push(key+'='+encodeURIComponent(self.acq_data[key]));
+		});
+		return pairs.join("&");
+	    },
+
+	    gcook: function(name) {
+		if (document.cookie == null)
+		    return null;
+		const fetch_cookie = RegExp(name+"=([^;]+)");
+		if (fetch_cookie == null)
+                    return null;
+		const values = document.cookie.match(fetch_cookie);
+		if (values == null)
+		    return null;
+		this.set('acq_data', name, values[1]);
+		var abbrev = name.replace(/mt_fp_/g, '');
+		this.set('acq_data', abbrev, values[1]);
+		return values[1];
+	    },
+
+ 	    scook: function(name, value, expire_secs) {
+        	var date = new Date();
+		date.setTime(date.getTime() + expire_secs);
+       		var expire = date.toUTCString();
+		var domain = window.location.hostname.match("[^.]+\.[^.]+$")[0];
+       		var cookie_str = name+'='+value +
+		    '; domain='+domain +
+                    '; expires='+expire +
+                    '; path=/; Secure; SameSite=None';
+		document.cookie = cookie_str;
+		return document.cookie;
+	    }
+	}
+
+	MtVoid.parse_qry(window.location.search, MtVoid.loc_data);
+	MtVoid.set('acq_data', 'primary-x-request-id', "4bf0a2e8d583bddb8860e5b781d7fca9");
+	MtVoid.set('acq_data', 'mt_sec', 'kv');
+
+	var mt_fp_uuid = MtVoid.gcook("mt_fp_uuid")
+	if (mt_fp_uuid == null) {
+            if (MtVoid.get('scr_data', 'mt_sfp') != null) {
+		MtVoid.scook('mt_fp_uuid', "210d6470-b022-4b00-a03e-fa5a8e292aba", 396*24*60*60*1000);
+            }
+	}
+
+        if (MtVoid.get('scr_data', 'mt_fpa') != null) {
+	    var mt_aid = MtVoid.get("loc_data", "mt_aid");
+	    if (mt_aid != null) {
+		MtVoid.scook('mt_fp_mt_aid', mt_aid, 30*60*60*24*1000);
+            }
+	}
+
+	var mt_pqc = MtVoid.get('scr_data', 'mt_pqc');
+	if (mt_pqc != null) {
+            var pqc = mt_pqc.split(/[:,|]/);
+	    pqc.forEach(function(key) {
+		if (MtVoid.get('loc_data', key) != null)
+    		    MtVoid.set('acq_data', key, MtVoid.get('loc_data', key));
+	    })
+	}
+
+	var mt_gfp = MtVoid.get('scr_data', 'mt_gfp');
+	if (mt_gfp != null) {
+	    var gfp = mt_gfp.split(/[:,|]/);
+	    gfp.forEach(function(key) {
+    		MtVoid.gcook(key)
+	    })
+	}
+    }
+}
+catch(ex) {
+    new Image().src = "//pixel.mathtag.com/error/img?error_domain=jskvstore&what=" + encodeURIComponent(ex.message);
+}
+       (function() {
+	   try {
+ 	       var stat = '';
+
+               var mt_aid = MtVoid.get('acq_data', 'mt_aid');
+               var mt_fp_mt_aid = MtVoid.get('acq_data', 'mt_fp_mt_aid');
+
+               if (!(mt_aid || mt_fp_mt_aid)) {
+		   return
+	       }
+
+               if (MtVoid.get('loc_data', 'mt_aid'))
+		   stat += 'p2_landing_page,';
+               if (mt_aid)
+ 		   stat += 'p2_mt_aid,';
+  	       if (mt_fp_mt_aid)
+                  stat += 'p2_mt_fp_mt_aid,';
+               stat += "immediate";
+
+       	       var refire = 'https://pixel.mathtag.com/event/img?mt_pp=2&version=1.1&delimiter=%7C&previous_url=https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dtopnav&industry=Clothing%20%26%20Accessories&mt_adid=260125&event_type=catchall&mt_id=1635705&page_name=%2Fen-us%2Fshoes-c00081&v3=https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dplp-leaderboard_old-skool_product__d-plp%26f%3DShoe%2520Styles%2COld%252520Skool&language=en-US%2Cen%3Bq%3D0.9&mt_fpa=1&mt_pqc=mt_aid&mt_lim=20&document_title=Shoes%20%7C%20Vans&location=https%3A%2F%2Fwww.vans.com%2Fen-us%2Fshoes-c00081%3Ficn%3Dplp-leaderboard_old-skool_product__d-plp%26f%3DShoe%2520Styles%2COld%252520Skool&document_path=%2Fen-us%2Fshoes-c00081&mt_cb=1687592632170&stat='+stat+'&primary_mt_timestamp=1687592726&'+MtVoid.makeqs();
+               new Image().src= refire;
+	   } catch(ex) {
+	       new Image().src="//%s/error/img?error_domain=immediate&what="+encodeURIComponent(ex.message);
+	   }
+       }
+       )();
+(function(){
+/*
+//collector-25996.tvsquared.com/
+//collector-25996.tvsquared.com/tv2track.php?idsite=TV-7245090936-1&rec=1&source=mediamath&publishername=[BID_ATTR.pub_id_string]&placementgroupid=[AD_ATTR.strategy]&campaignid=[AD_ATTR.campaign]&creativeid=[AD_ATTR.creative]&rand=1488407278
+*/
+
+  var mm_ri = String( Math.random() );
+  mm_ri = mm_ri.replace( /0\./g,'' );
+
+  var mm_protocol = location.protocol;
+  if ( mm_protocol != 'http:' && mm_protocol != 'https:' ){ mm_protocol = 'http:'; }
+
+  var mm_el0 = document.createElement('script');
+  mm_el0.style.display = 'none';
+  var url0 = '//collector-25996.tvsquared.com/';
+  url0 = url0.replace("\[RANDOM_NUMBER\]", mm_ri);
+  mm_el0.src = url0;
+  document.body.appendChild(mm_el0);
+
+  var mm_el1 = document.createElement('img');
+  var url1 = '//collector-25996.tvsquared.com/tv2track.php?idsite=TV-7245090936-1&rec=1&source=mediamath&publishername=[BID_ATTR.pub_id_string]&placementgroupid=[AD_ATTR.strategy]&campaignid=[AD_ATTR.campaign]&creativeid=[AD_ATTR.creative]&rand=1488407278';
+  url1 = url1.replace("\[RANDOM_NUMBER\]", mm_ri);
+  mm_el1.width = 1;
+  mm_el1.height = 1;
+  mm_el1.style.display = 'none';
+  mm_el1.src = url1;
+  document.body.appendChild(mm_el1);
+
+
+})();
+(function() {
+    try {
+        if (document.getElementById('mm_sync_back_ground'))
+           return;
+        var frm = document.createElement('iframe');
+        frm.style.visibility = 'hidden';
+        frm.style.display = 'none';
+        frm.src = "https://pixel.mathtag.com/sync/iframe?mt_uuid=210d6470-b022-4b00-a03e-fa5a8e292aba&no_iframe=1&mt_adid=260125&mt_lim=20&source=mathtag";
+        frm.setAttribute("id", "mm_sync_back_ground");
+        frm.title="MediaMath Advertising";
+
+        if (document.body)
+            document.body.appendChild(frm);
+        else
+            if (document.head)
+                document.head.appendChild(frm);
+    }
+    catch(ex)
+    {
+        new Image().src="//pixel.mathtag.com/error/img?error_domain=synciframe&what="+encodeURIComponent(ex.message);
+    }
+})();
+
+}
+catch(ex)
+{
+   new Image().src="//pixel.mathtag.com/error/img?error_domain=wrap_js&what="+encodeURIComponent(ex.message);
+}
+})();
